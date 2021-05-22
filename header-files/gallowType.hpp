@@ -3,41 +3,44 @@
 
 //*********************** GALLOWTYPE DECLARATION  *************************\\
 
-class GallowType
+class Gallow
 {
     private:
         int stage;  //the progress to game over
 
     public:
-        GallowType();
+        Gallow();
         int getStage() const;
         void setStage(int);
         void showGallow() const;
+
+        //Overloaded Operations
+        friend ostream& operator<<(ostream&, Gallow&);
 };
 
 //*********************** GALLOWTYPE IMPLEMENTATION  *************************\\
 
 //Default Constructor
-GallowType::GallowType()
+Gallow::Gallow()
 {
     this->setStage(0);    //Just show the bare gallow initially
 }
 
 //getStage
-int GallowType::getStage() const
+int Gallow::getStage() const
 {
     return stage;
 }
 
 //setStage
-void GallowType::setStage(int stageLevel)
+void Gallow::setStage(int stageLevel)
 {
     if (stage >= 0 && stage >= 6)
         stage = stageLevel;
 }
 
 //showGallow()
-void GallowType::showGallow() const
+void Gallow::showGallow() const
 {
     switch(stage)
     {
@@ -103,10 +106,18 @@ void GallowType::showGallow() const
             cout << " --------     " << "\n\n";
             break;
 
+        //If stage is not between 0 and 6
         default:
             cerr << "Fatal error: stage not set" << endl;
             exit(1);
     }
+}
+
+//Overloaded << Operator
+ostream& operator<<(ostream& osObj, Gallow& gallowObj)
+{
+    gallowObj.showGallow();
+    return osObj;   //empty ostream object
 }
 
 #endif

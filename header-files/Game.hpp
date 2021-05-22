@@ -7,7 +7,8 @@
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++ (includes sleep())
 
 //Custom Header Files
-#include "menu.hpp"               //The main menu
+#include "menu.hpp"                //The main menu
+#include "player.hpp"             //Stores guesses remaining and related functions for the player
 #include "wordType.hpp"          //The unknown word to be guessed
 #include "letterBankType.hpp"   //The letters that have been/can be guessed
 #include "gallowType.hpp"      //The ASCII art of the gallow
@@ -25,30 +26,39 @@ class Game
         //Abstract Aspects
         bool playGame;
         int guesses;
+        char guess;
 
         //Parts of the game
         Menu menu;
-        GallowType gallow;
+        Player player;
+        Gallow gallow;
         LetterBank letterBank;
 
     public:
+        //Parts of a game loop
         Game();
         void run();
         void stop();
+
+        //Game Core
         void displayGame();
-        void guess();
+        void guessChar();
+        void evalGameState();
+
+        //End of game
         void endWithLoss();
         void endWithWin();
 };
 
-//****************************** GAME INITIALIZATION *******************************\\
+//****************************** GAME IMPLEMENTATION *******************************\\
 
 //Default constructor
 Game::Game()
 {
     //Set starting values
     playGame = true;
-    guesses  = 6;         //6 guesses, one for each major body part (head, torso, arms, legs)
+    guesses  =  6;         //6 guesses, one for each major body part (head, torso, arms, legs)
+    guess    = '?';       //Initializes guess to an error value, which will be overwritten at the first turn
 
     //Start the game upon instantiation
     this->run();    
@@ -57,15 +67,12 @@ Game::Game()
 //run() (game loop)
 void Game::run()
 {
-    //Header
-    menu.showMenu();
-    gallow.showGallow();
-
     //Game loop
     while(playGame)
     {
-        this->displayGame(); 
-        this->stop();
+        this->displayGame();        //Display the title, gallow, word, and letter bank
+        this->guessChar();         //Get a guess from the player
+        this->evalGameState();    //Evaluate the consequences of the guess
     }
 }
 
@@ -78,19 +85,33 @@ void Game::stop()
 //displayGame (word progress, wordbank, gallow, etc.)
 void Game::displayGame()
 {
-    cout << letterBank;
+    menu.showTitle();      
+    cout << gallow;       
+    cout << letterBank;  
 }
 
 //guess()
-void Game::guess()
+void Game::guessChar()
 {
-    cout << "Guessing!" << endl;
+    guess = player.getGuess();
+    letterBank.setGuessed(guess);
+}
+
+//evalGameState
+void Game::evalGameState()
+{
+    player--;
+    cout << "Guesses remaining: " << player.getGuesses() << endl;
+
+    if (guesses <= 0)
+        this->endWithLoss();
 }
 
 //End game (lost)
 void Game::endWithLoss()
 {
-    //Empty
+    cout << RED << "You lost!" << RESET << endl;
+    this->stop();
 }
 
 //End game (won)

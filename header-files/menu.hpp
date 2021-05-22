@@ -12,7 +12,7 @@ class Menu
 {
     public:
         Menu();
-        void showMenu();
+        void showTitle();
 };
 
 //*************************** MENU IMPLEMENTATION ********************************\\
@@ -24,7 +24,7 @@ Menu::Menu()
 }
 
 //showMenu
-void Menu::showMenu()
+void Menu::showTitle()
 {
    //I know it looks ugly, but that's just the escape codes ruining the alignment
   //Created with ASCII art generator (font: Big): https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20

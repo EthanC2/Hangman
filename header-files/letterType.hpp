@@ -31,11 +31,13 @@ class LetterType
         void setGuessed(bool);
         bool isGuessed();
         
-        //Print function
+        //Miscellaneous Methods
         void print() const;
+        bool isEqual(const char);
 
         //Overloaded operators
         void operator=(const char);
+        bool operator==(const char); 
         friend ostream& operator<<(ostream&, const LetterType&);        
 };
 
@@ -83,18 +85,30 @@ bool LetterType::isGuessed()
     return guessed;
 }
 
+//isEqual
+bool LetterType::isEqual(const char character)
+{
+    return this->letter == character;
+}
+
 //print()
 void LetterType::print() const
 {
      //If the letter has not been guessed, print it as green,
     //otherwise, print it as red (guessed)
-    cout << (!guessed ? GREEN : RED) << letter << " ";
+    cout << (!guessed ? GREEN : RED) << letter << LIGHT_BLUE << " ";
 }
 
 //Overloaded = operator
 void LetterType::operator=(const char character)
 {
     this->setLetter(character);
+}
+
+//Overloaded == operator
+bool LetterType::operator==(const char character)
+{
+    return this->isEqual(character);
 }
 
 //Overloaded << operator

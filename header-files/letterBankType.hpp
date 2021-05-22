@@ -16,12 +16,16 @@ using namespace std;
 class LetterBank
 {
     private:
+        //Data members
         array<LetterType, 26> letters;
 
     public:
+        //Methods
         LetterBank();
+        void setGuessed(const char);
         void print() const;
-
+        
+        //Overloaded Operators
         friend ostream& operator<<(ostream&, const LetterBank&);
 };
 
@@ -41,16 +45,30 @@ LetterBank::LetterBank()
     }
 }
 
+//setGuessed() -- simple sequential search, suitable for short items
+void LetterBank::setGuessed(const char guess)
+{
+    //For every letter in the letter bank
+    for(int pos=0; pos < letters.size(); pos++)
+    {
+        //If the current letter matches the given letter, set it to guessed
+        if(letters[pos].isEqual(guess))
+        {
+            letters[pos].setGuessed(true);
+            break;
+        }
+    }
+}
+
 //print()
 void LetterBank::print() const
 {
     //Header
-    cout << "Letters Bank:\n";
+    cout << "Letter Bank:\n";
 
     for(int pos=0; pos < letters.size(); pos++)
     {
         letters[pos].print();
-        //cout << letters[pos];      //simpler, but causes an 'ambiguous overload' error :/
     }
     cout << '\n';
 }
