@@ -26,7 +26,8 @@ Menu::Menu()
 //showMenu
 void Menu::showMenu()
 {
-  //I know it looks ugly, but that's just the escape codes ruining the alignment
+   //I know it looks ugly, but that's just the escape codes ruining the alignment
+  //Created with ASCII art generator (font: Big): https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
   cout << "   _    _          _   _  _____ __  __          _   _  " << '\n';
   cout << "  | |  | |   /\\   | \\ | |/ ____|  \\/  |   /\\   | \\ | | " << '\n';
   cout << "  | |__| |  /  \\  |  \\| | |  __| \\  / |  /  \\  |  \\| | " << '\n';
