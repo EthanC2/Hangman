@@ -45,7 +45,7 @@ LetterBank::LetterBank()
 void LetterBank::print() const
 {
     //Header
-    cout << "Letters\n=======\n";
+    cout << "Letters Bank:\n";
 
     for(int pos=0; pos < letters.size(); pos++)
     {
