@@ -4,7 +4,7 @@
 //Native header files
 #include <iostream>      //I/O stream operations
 #include <string>       //String class
-#include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++
+#include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++ (includes sleep())
 
 //Custom Header Files
 #include "menu.hpp"               //The main menu
