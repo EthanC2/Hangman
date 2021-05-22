@@ -25,7 +25,7 @@ class Game
     private:
         //Abstract Aspects
         bool playGame;
-        int guesses;
+        int  guesses;
         char guess;
 
         //Parts of the game
@@ -41,7 +41,7 @@ class Game
 
         //Game Core
         void displayGame();
-        void guessChar();
+        void getGuess();
         void evalGameState();
 
         //End of game
@@ -70,7 +70,7 @@ void Game::run()
     while(playGame)
     {
         this->displayGame();        //Display the title, gallow, word, and letter bank
-        this->guessChar();         //Get a guess from the player
+        this->getGuess();         //Get a guess from the player
         this->evalGameState();    //Evaluate the consequences of the guess
     }
 }
@@ -90,7 +90,7 @@ void Game::displayGame()
 }
 
 //guess()
-void Game::guessChar()
+void Game::getGuess()
 {
     guess = getchar();
     letterBank.setGuessed( toupper(guess) );
