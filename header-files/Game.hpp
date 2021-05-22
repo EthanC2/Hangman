@@ -2,17 +2,17 @@
 #define GAME_LOOP
 
 //Native header files
-#include <iostream>      //I/O stream operations
-#include <string>       //String class
+#include <iostream>       //I/O stream operations
+#include <string>        //String class
+#include <cctype>       //Contains function toupper()
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++ (includes sleep())
 
 //Custom Header Files
 #include "menu.hpp"                //The main menu
-#include "player.hpp"             //Stores guesses remaining and related functions for the player
-#include "wordType.hpp"          //The unknown word to be guessed
-#include "letterBankType.hpp"   //The letters that have been/can be guessed
-#include "gallowType.hpp"      //The ASCII art of the gallow
-#include "textMods.h"         //Contains text coloring
+#include "wordType.hpp"           //The unknown word to be guessed
+#include "letterBankType.hpp"    //The letters that have been/can be guessed
+#include "gallowType.hpp"       //The ASCII art of the gallow
+#include "textMods.h"          //Contains text coloring
 
 //Namespace
 using namespace std;     //Small project, so using namespace std is acceptable
@@ -30,7 +30,6 @@ class Game
 
         //Parts of the game
         Menu menu;
-        Player player;
         Gallow gallow;
         LetterBank letterBank;
 
@@ -93,15 +92,15 @@ void Game::displayGame()
 //guess()
 void Game::guessChar()
 {
-    guess = player.getGuess();
-    letterBank.setGuessed(guess);
+    guess = getchar();
+    letterBank.setGuessed( toupper(guess) );
 }
 
 //evalGameState
 void Game::evalGameState()
 {
-    player--;
-    cout << "Guesses remaining: " << player.getGuesses() << endl;
+    guesses--;
+    cout << "Guesses remaining: " << guesses << endl;
 
     if (guesses <= 0)
         this->endWithLoss();
