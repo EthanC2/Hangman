@@ -20,7 +20,7 @@ class Menu
 //Default Constructor
 Menu::Menu()
 {
-
+    //No data members to initialize 
 }
 
 //showMenu
