@@ -7,10 +7,11 @@
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++
 
 //Custom Header Files
-#include "wordType.hpp"        //The unknown word to be guessed
+#include "Menu.hpp"               //The main menu
+#include "wordType.hpp"          //The unknown word to be guessed
 #include "letterBankType.hpp"   //The letters that have been/can be guessed
-#include "gallowType.hpp"    //The ASCII art of the gallow
-#include "textMods.h"       //Contains text coloring
+#include "gallowType.hpp"      //The ASCII art of the gallow
+#include "textMods.h"         //Contains text coloring
 
 //Namespace
 using namespace std;     //Small project, so using namespace std is acceptable
@@ -26,6 +27,8 @@ class Game
         int guesses;
 
         //Parts of the game
+        Menu menu;
+        GallowType gallow;
         LetterBank letterBank;
 
     public:
@@ -55,19 +58,15 @@ Game::Game()
 void Game::run()
 {
     //Header
-    cout << LIGHT_BLUE << "Starting game!" << endl;
+    menu.showMenu();
+    gallow.showGallow();
 
     //Game loop
     while(playGame)
     {
-        //this->displayGame(); 
-        //sleep(1);
-        //this->guess();
-
-        cout << letterBank;
+        this->displayGame(); 
         this->stop();
     }
-
 }
 
 //stop() (ends the game loop)
@@ -79,7 +78,7 @@ void Game::stop()
 //displayGame (word progress, wordbank, gallow, etc.)
 void Game::displayGame()
 {
-    cout << "Displaying game!" << endl;
+    cout << letterBank;
 }
 
 //guess()
