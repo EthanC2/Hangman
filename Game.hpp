@@ -8,7 +8,7 @@
 
 //Custom Header Files
 #include "wordType.hpp"        //The unknown word to be guessed
-#include "wordbankType.hpp"   //The letters that have been/can be guessed
+#include "letterBankType.hpp"   //The letters that have been/can be guessed
 #include "gallowType.hpp"    //The ASCII art of the gallow
 #include "textMods.h"       //Contains text coloring
 
@@ -21,8 +21,12 @@ using namespace std;     //Small project, so using namespace std is acceptable
 class Game
 {
     private:
-        bool gameover;
+        //Abstract Aspects
+        bool playGame;
         int guesses;
+
+        //Parts of the game
+        LetterBank letterBank;
 
     public:
         Game();
@@ -40,11 +44,10 @@ class Game
 Game::Game()
 {
     //Set starting values
-    gameover = false;
-    guesses  = 10;         //There is no standard amount of guesses in Hangman, but I saw the numbers 8-11 often.
+    playGame = true;
+    guesses  = 6;         //6 guesses, one for each major body part (head, torso, arms, legs)
 
-    //Start the game upon creation
-    gameover = false;
+    //Start the game upon instantiation
     this->run();    
 }
 
@@ -54,12 +57,15 @@ void Game::run()
     //Header
     cout << LIGHT_BLUE << "Starting game!" << endl;
 
-    while(!gameover)
+    //Game loop
+    while(playGame)
     {
-        this->displayGame();
-        sleep(1);
-        this->guess();
-        sleep(5);
+        //this->displayGame(); 
+        //sleep(1);
+        //this->guess();
+
+        cout << letterBank;
+        this->stop();
     }
 
 }
@@ -67,7 +73,7 @@ void Game::run()
 //stop() (ends the game loop)
 void Game::stop()
 {
-    
+    playGame = false;
 }
 
 //displayGame (word progress, wordbank, gallow, etc.)

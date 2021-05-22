@@ -1,14 +1,18 @@
 #ifndef LETTER_TYPE
 #define LETTER_TYPE
 
+//Native Header Files
+#include <iostream>       //I/O Operations
 #include <cctype>        //Contains isalpha()
+
+//Custom Header File
 #include "textMods.h"   //Contains text coloring 
 
 
 //****************************** LETTERTYPE DECLARATION **************************\\
 
-//Class: letterType (composes the individual letters in the wordbank)
-class letterType
+//Class: LetterType (composes the individual letters in the wordbank)
+class LetterType
 {
     private:
         char letter;
@@ -16,8 +20,8 @@ class letterType
 
     public:
         //Constructors
-        letterType();
-        letterType(char);
+        LetterType();
+        LetterType(char);
 
         //Letter Get/Set Methods
         char getLetter();
@@ -27,23 +31,27 @@ class letterType
         void setGuessed(bool);
         bool isGuessed();
         
-        //Print functions
-        void print();
+        //Print function
+        void print() const;
+
+        //Overloaded operators
+        void operator=(const char);
+        friend ostream& operator<<(ostream&, const LetterType&);        
 };
 
 
-//****************************** LETTERTYPE INITIALIZATION **************************\\
+//****************************** LETTERTYPE IMPLEMENTATION **************************\\
 
 //Default Constructor
-letterType::letterType()
+LetterType::LetterType()
 {
     //Set default values
-    letter = '?';   //reserved letters - indicates an error
+    letter = '?';   //reserved letter - indicates an error
     guessed = false;
 }
 
 //Parameterized Constructor
-letterType::letterType(char character)
+LetterType::LetterType(char character)
 {
     //Set default values
     letter  = character;
@@ -51,36 +59,49 @@ letterType::letterType(char character)
 }
 
 //getLetter()
-char letterType::getLetter()
+char LetterType::getLetter()
 {
     return letter;
 }
 
 //setLetter()
-void letterType::setLetter(char character)
+void LetterType::setLetter(char character)
 {
     if ( isalpha(character) )
         letter = character;
 }
 
 //setGuessed()
-void letterType::setGuessed(bool boolean)  
+void LetterType::setGuessed(bool boolean)  
 {
     guessed = boolean;
 }
 
 //isGuessed()
-bool letterType::isGuessed()
+bool LetterType::isGuessed()
 {
     return guessed;
 }
 
 //print()
-void letterType::print()
+void LetterType::print() const
 {
      //If the letter has not been guessed, print it as green,
-    //otherwise, print it as red
-    cout << (!guessed ? GREEN : RED)  << letter;
+    //otherwise, print it as red (guessed)
+    cout << (!guessed ? GREEN : RED) << letter << " ";
+}
+
+//Overloaded = operator
+void LetterType::operator=(const char character)
+{
+    this->setLetter(character);
+}
+
+//Overloaded << operator
+ostream& operator<<(ostream& osObj, const LetterType letterTypeObj)
+{
+    letterTypeObj.print();
+    return osObj; //empty ostream object
 }
 
 #endif
