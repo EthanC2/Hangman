@@ -26,6 +26,7 @@ Menu::Menu()
 //showMenu
 void Menu::showMenu()
 {
+  //I know it looks ugly, but that's just the escape codes ruining the alignment
   cout << "   _    _          _   _  _____ __  __          _   _  " << '\n';
   cout << "  | |  | |   /\\   | \\ | |/ ____|  \\/  |   /\\   | \\ | | " << '\n';
   cout << "  | |__| |  /  \\  |  \\| | |  __| \\  / |  /  \\  |  \\| | " << '\n';
