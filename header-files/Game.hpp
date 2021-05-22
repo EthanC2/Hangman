@@ -109,14 +109,15 @@ void Game::evalGameState()
 //End game (lost)
 void Game::endWithLoss()
 {
-    cout << RED << "You lost!" << RESET << endl;
     this->stop();
+    cout << '\n' << RED << "You lost!" << RESET << '\n' << endl;
 }
 
 //End game (won)
 void Game::endWithWin()
 {
-    //Empty
+    this->stop();
+    cout << '\n' << GREEN << "You won!" << RESET << '\n' << endl;
 }
 
 #endif
