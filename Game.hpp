@@ -7,7 +7,7 @@
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++
 
 //Custom Header Files
-#include "Menu.hpp"               //The main menu
+#include "menu.hpp"               //The main menu
 #include "wordType.hpp"          //The unknown word to be guessed
 #include "letterBankType.hpp"   //The letters that have been/can be guessed
 #include "gallowType.hpp"      //The ASCII art of the gallow
