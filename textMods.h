@@ -1,3 +1,9 @@
+//Terminal text modifiers for Linux
+
+  //Source:
+ //This ungodly long and detailed post by Shakiba Moshiri: https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+//Shakiba Moshiri's StackOverflow: https://stackoverflow.com/users/4643584/shakiba-moshiri
+
 #ifndef TEXT_MODIFIERS
 #define TEXT_MODIFIERS
 
