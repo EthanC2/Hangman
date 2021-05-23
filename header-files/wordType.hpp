@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 //*************************** WORD CLASS DECLARATION  ******************************\\
@@ -7,8 +8,8 @@ using namespace std;
 class Word
 {
     private:
-        string word;      //The actual word, in characters
-        string shadow;   //The mirror of the word, in underscores
+        string target;      //The unknown word
+        string shadow;     //The mirror of the word, in underscores
 
     public:
         //Methods
@@ -29,31 +30,37 @@ class Word
 Word::Word()
 {
      //The default constructor should never be used, so
-    //the default word is '?', to indicate an error.
-  //    word = "?";
- //   shadow = "_";
+    //the default target is '?', to indicate an error.
+//    target = "?";
+//   shadow = "_";
 
-    word = "word";
-    shadow = "____";
+    target = "target";
+    shadow = "______";
 }
 
 //contains()
 bool Word::contains(const char character) const
 {
-    return word.find(character) != string::npos;    //return true if the character appears at least once
+    return target.find(character) != string::npos;    //return true if the character appears at least once
 }
 
 //reveal()
-void Word::reveal(const char character)
+void Word::reveal(const char letter)
 {
-    //Find the first position of the letter, sets the stage for the while loop
-    int pos = word.find(character);     //Guaranteed not to be string::npos, since it's only called after this->contains()
-
-    //Replace all proper underscores with the letter
-    while(pos != string::npos)  
+    //Declare a vector to store all indexes of the guess (letter)
+    vector<int> positions;
+    
+    //Traverse the guess to find all instances of that letter
+    for(int index=0; index < target.length(); index++)
     {
-        shadow[pos] = character;      //Set the underscore to the proper letter
-        pos = word.find(character);   //Get the next index of said letter
+        if (target[index] == letter)
+            positions.push_back(index);
+    }
+
+    //Replace all appropriate underscores with the guessed letter
+    for(int i=0; i < positions.size(); i++)
+    {
+        shadow[ positions[i] ] = letter;
     }
 }
 
@@ -70,8 +77,8 @@ void Word::print() const
 }
 
 //Overloaded << operator
-ostream& operator<<(ostream& osObj, Word& wordObj)
+ostream& operator<<(ostream& osObj, Word& targetObj)
 {
-    wordObj.print();
+    targetObj.print();
     return osObj;   //empty ostream object
 }
