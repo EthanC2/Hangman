@@ -117,7 +117,7 @@ void Gallow::showGallow() const
 }
 
 //Overloaded ++ (Postfix) Operator
-void Gallow::operator++(int placeholder)
+void Gallow::operator++(int placeholder)  //int parameter differentiates prefix (++var) from postfix (var++) operator
 {
     stage++;
 }
