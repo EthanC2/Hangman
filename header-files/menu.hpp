@@ -4,6 +4,10 @@
 //Native Header Files
 #include <iostream>
 #include <string>
+
+//Custom Header Files
+#include "textMods.h"
+
 using namespace std;
 
 //*************************** MENU DECLARATION ********************************\\
@@ -28,6 +32,10 @@ void Menu::showTitle()
 {
    //I know it looks ugly, but that's just the escape codes ruining the alignment
   //Created with ASCII art generator (font: Big): https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+ 
+  //Color the output
+  cout << BLUE;
+  
   cout << "   _    _          _   _  _____ __  __          _   _  " << '\n';
   cout << "  | |  | |   /\\   | \\ | |/ ____|  \\/  |   /\\   | \\ | | " << '\n';
   cout << "  | |__| |  /  \\  |  \\| | |  __| \\  / |  /  \\  |  \\| | " << '\n';

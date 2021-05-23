@@ -37,6 +37,8 @@ void Gallow::setStage(int stageLevel)
 {
     if (stage >= 0 && stage >= 6)
         stage = stageLevel;
+    else
+        stage = 0;
 }
 
 //showGallow()

@@ -69,7 +69,7 @@ char LetterType::getLetter()
 //setLetter()
 void LetterType::setLetter(char character)
 {
-    if ( isalpha(character) )
+    if (isalpha(character))
         letter = character;
 }
 

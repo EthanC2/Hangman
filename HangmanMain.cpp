@@ -1,4 +1,4 @@
-#include "./header-files/Game.hpp"
+#include "./header-files/Game.hpp"   //Includes the game, and all of its dependents
 
 //Driver code
 int main()

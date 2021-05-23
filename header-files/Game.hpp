@@ -2,8 +2,9 @@
 #define GAME_LOOP
 
 //Native header files
-#include <iostream>       //I/O stream operations
-#include <string>        //String class
+#include <iostream>        //I/O stream operations
+#include <string>         //String class
+#include <limits>        //Contains numeric_limits::max()
 #include <cctype>       //Contains function toupper()
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++ (includes sleep())
 
@@ -42,7 +43,7 @@ class Game
         //Game Core
         void displayGame();
         void getGuess();
-        void evalGameState();
+        void updateGame();
 
         //End of game
         void endWithLoss();
@@ -69,9 +70,9 @@ void Game::run()
     //Game loop
     while(playGame)
     {
-        this->displayGame();        //Display the title, gallow, word, and letter bank
-        this->getGuess();         //Get a guess from the player
-        this->evalGameState();    //Evaluate the consequences of the guess
+        this->displayGame();     //Display the title, gallow, word, and letter bank
+        this->getGuess();       //Get a guess from the player
+        this->updateGame();    //Evaluate the consequences of the guess
     }
 }
 
@@ -84,24 +85,40 @@ void Game::stop()
 //displayGame (word progress, wordbank, gallow, etc.)
 void Game::displayGame()
 {
+    //Clear screen
+    system("clear");
+    cout.flush();
+
+    //Show updated screen
     menu.showTitle();      
     cout << gallow;       
     cout << letterBank;  
+    cout << "Guesses remaining: " << guesses << endl;
 }
 
 //guess()
 void Game::getGuess()
 {
-    guess = getchar();
+    //Get character from the user
+    cout << "\nEnter a character: ";
+    cin.get(guess);
+
+    //Prevent registering the extra guess from hitting 'enter' to submit guess
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n' );
+
+    //Set the character to guessed 
     letterBank.setGuessed( toupper(guess) );
 }
 
-//evalGameState
-void Game::evalGameState()
+//updateGame
+void Game::updateGame()
 {
+    //Check if guesses need to be decremented
     guesses--;
-    cout << "Guesses remaining: " << guesses << endl;
+    gallow.setStage(6 - guesses);
 
+    //If no guesses left, end the game
     if (guesses <= 0)
         this->endWithLoss();
 }
@@ -110,6 +127,7 @@ void Game::evalGameState()
 void Game::endWithLoss()
 {
     this->stop();
+    this->displayGame();
     cout << '\n' << RED << "You lost!" << RESET << '\n' << endl;
 }
 
@@ -117,7 +135,8 @@ void Game::endWithLoss()
 void Game::endWithWin()
 {
     this->stop();
+    this->displayGame();
     cout << '\n' << GREEN << "You won!" << RESET << '\n' << endl;
 }
 
-#endif
+#endif  
