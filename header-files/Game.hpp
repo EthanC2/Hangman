@@ -121,8 +121,10 @@ void Game::evalGuess()
     if (!word.contains(guess))
     {
         guesses--;                         //Subtract one guess
-        gallow.setStage(6 - guesses);     //Add another body part
+        gallow++;     //Add another body part
     }
+    else
+        cout << LIGHT_BLUE << "CORRECT!" << RESET << endl;
 }
 
 //updateGame

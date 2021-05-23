@@ -15,6 +15,7 @@ class Gallow
         void showGallow() const;
 
         //Overloaded Operations
+        void operator++(int);
         friend ostream& operator<<(ostream&, Gallow&);
 };
 
@@ -113,6 +114,12 @@ void Gallow::showGallow() const
             cerr << "Fatal error: stage not set" << endl;
             exit(1);
     }
+}
+
+//Overloaded ++ (Postfix) Operator
+void Gallow::operator++(int placeholder)
+{
+    stage++;
 }
 
 //Overloaded << Operator
