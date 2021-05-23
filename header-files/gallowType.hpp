@@ -35,7 +35,7 @@ int Gallow::getStage() const
 //setStage
 void Gallow::setStage(int stageLevel)
 {
-    if (stage >= 0 && stage >= 6)
+    if (stageLevel >= 0 && stageLevel >= 6)
         stage = stageLevel;
     else
         stage = 0;

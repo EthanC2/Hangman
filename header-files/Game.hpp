@@ -31,6 +31,7 @@ class Game
 
         //Parts of the game
         Menu menu;
+        Word word;
         Gallow gallow;
         LetterBank letterBank;
 
@@ -43,6 +44,7 @@ class Game
         //Game Core
         void displayGame();
         void getGuess();
+        void evalGuess();
         void updateGame();
 
         //End of game
@@ -72,6 +74,7 @@ void Game::run()
     {
         this->displayGame();     //Display the title, gallow, word, and letter bank
         this->getGuess();       //Get a guess from the player
+        this->evalGuess();
         this->updateGame();    //Evaluate the consequences of the guess
     }
 }
@@ -92,7 +95,8 @@ void Game::displayGame()
     //Show updated screen
     menu.showTitle();      
     cout << gallow;       
-    cout << letterBank;  
+    cout << letterBank << endl;
+    cout << word;
     cout << "Guesses remaining: " << guesses << endl;
 }
 
@@ -111,16 +115,26 @@ void Game::getGuess()
     letterBank.setGuessed( toupper(guess) );
 }
 
+//evalGuess()
+void Game::evalGuess()
+{
+    if (!word.contains(guess))
+    {
+        guesses--;                         //Subtract one guess
+        gallow.setStage(6 - guesses);     //Add another body part
+    }
+}
+
 //updateGame
 void Game::updateGame()
 {
-    //Check if guesses need to be decremented
-    guesses--;
-    gallow.setStage(6 - guesses);
-
-    //If no guesses left, end the game
+    //If no guesses left, end the game (lost)
     if (guesses <= 0)
         this->endWithLoss();
+    
+    //If the word is solved, end the game (won)
+    else if (word.solved())
+        this->endWithWin();
 }
 
 //End game (lost)

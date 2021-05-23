@@ -48,6 +48,9 @@ LetterBank::LetterBank()
 //setGuessed() -- simple sequential search, suitable for short items
 void LetterBank::setGuessed(const char guess)
 {
+    //int pos = static_cast<int>(guess) - 101;   //'A' starts at 101 in ASCII 
+    //letters[pos].setGuessed(true);
+
     //For every letter in the letter bank
     for(int pos=0; pos < letters.size(); pos++)
     {
