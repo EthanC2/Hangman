@@ -95,9 +95,9 @@ void Game::displayGame()
     //Show updated screen
     menu.showTitle();      
     cout << gallow;       
-    cout << letterBank << endl;
     cout << word;
-    cout << "Guesses remaining: " << guesses << endl;
+    cout << "Guesses: " << guesses << endl;
+    cout << letterBank << endl;
 }
 
 //guess()
@@ -118,13 +118,15 @@ void Game::getGuess()
 //evalGuess()
 void Game::evalGuess()
 {
-    if (!word.contains(guess))
+    if (word.contains(guess))     //If the word contains the guess
     {
-        guesses--;                         //Subtract one guess
-        gallow++;     //Add another body part
+        word.reveal(guess);    //Reveal the appropriate letters
     }
     else
-        cout << LIGHT_BLUE << "CORRECT!" << RESET << endl;
+    {
+        guesses--;     //Subtract one guess
+        gallow++;     //Add another body part (overloaded postfix operator)
+    }
 }
 
 //updateGame

@@ -13,7 +13,8 @@ class Word
     public:
         //Methods
         Word();
-        bool contains(const char);
+        bool contains(const char) const;
+        void reveal(const char);
         bool solved() const;
         void print() const;
 
@@ -37,21 +38,23 @@ Word::Word()
 }
 
 //contains()
-bool Word::contains(const char character)
+bool Word::contains(const char character) const
 {
-    int pos = word.find(character);
-    bool found = (pos != string::npos ? true : false);    //if word.find() found the character, found = true
+    return word.find(character) != string::npos;    //return true if the character appears at least once
+}
 
-    while ( word.find(character) != string::npos )   //For every occurance of the character,
+//reveal()
+void Word::reveal(const char character)
+{
+    //Find the first position of the letter, sets the stage for the while loop
+    int pos = word.find(character);     //Guaranteed not to be string::npos, since it's only called after this->contains()
+
+    //Replace all proper underscores with the letter
+    while(pos != string::npos)  
     {
-        //Set the underscored character to the actual character
-        shadow[pos] = word[pos];
-
-        //Get the next position of the character
-        pos = word.find(character);
+        shadow[pos] = character;      //Set the underscore to the proper letter
+        pos = word.find(character);   //Get the next index of said letter
     }
-
-    return found;
 }
 
 //solved()
@@ -63,7 +66,7 @@ bool Word::solved() const
 //print
 void Word::print() const
 {
-    cout << "Word: " << shadow << endl;
+    cout << "Word: " << shadow << endl; 
 }
 
 //Overloaded << operator

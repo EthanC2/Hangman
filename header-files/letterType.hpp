@@ -15,10 +15,12 @@
 class LetterType
 {
     private:
+        //Data Members
         char letter;
         bool guessed;
 
     public:
+
         //Constructors
         LetterType();
         LetterType(char);

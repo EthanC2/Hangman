@@ -41,7 +41,7 @@ LetterBank::LetterBank()
     //For every character in the string above, create a 'LetterType' object from it for the array 'letters'
     for(int pos=0; pos < uppercaseLetters.length(); pos++)  
     {
-        letters[pos] = uppercaseLetters[pos];   //note the overloaded '=' operator
+        letters[pos] = uppercaseLetters[pos];   //note the overloaded letterType '=' operator
     }
 }
 
@@ -67,18 +67,19 @@ void LetterBank::setGuessed(const char guess)
 void LetterBank::print() const
 {
     //Header
-    cout << "Letter Bank:\n";
+    cout << "\nLetter Bank:\n";
 
+    //Output each letter linearly, end=" "
     for(int pos=0; pos < letters.size(); pos++)
     {
         letters[pos].print();
     }
-    cout << '\n';
 }
 
 //Overloaded << operator
 ostream& operator<<(ostream& osObj, const LetterBank& letterBankObj)
 {
+    //Print the letter bank
     letterBankObj.print();
     return osObj;   //empty ostream object
 }
