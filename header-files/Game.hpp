@@ -68,7 +68,7 @@ Game::Game(string givenWord)
     //Game setup
     playGame = true;
     guess = '?';
-    word = givenWord;
+    word = givenWord;  //overloaded '=' operator sets both target and shadow
 }
 
 //run() (game loop)
