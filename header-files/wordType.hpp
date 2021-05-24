@@ -17,9 +17,12 @@ class Word
         bool contains(const char) const;
         void reveal(const char);
         bool solved() const;
-        void print() const;
+        string getWord() const;    //Returns the target word
+        int getLength() const;    //Returns the amount of characters in the word
+        void print() const;      //Outputs the hidden word (the underscores)
 
         //Overloaded Operators
+        void operator=(const string);
         friend ostream& operator<<(ostream&, Word&);
 
 };
@@ -31,11 +34,8 @@ Word::Word()
 {
      //The default constructor should never be used, so
     //the default target is '?', to indicate an error.
-//    target = "?";
-//   shadow = "_";
-
-    target = "target";
-    shadow = "______";
+    target = "?";
+    shadow = "_";
 }
 
 //contains()
@@ -70,11 +70,38 @@ bool Word::solved() const
     return (shadow.find('_') == string::npos);    //game is over when there are no unknown characters
 }
 
+//getLength()
+int Word::getLength() const
+{
+    return target.length();
+}
+
+//getWord()
+string Word::getWord() const   //Returns the target word
+{
+    return target;
+}
+
 //print
 void Word::print() const
 {
     cout << "Word: " << shadow << endl; 
 }
+
+//Overloaded = operator
+void Word::operator=(const string str)
+{
+    //Set both characters to the given string
+    target = str;
+    shadow = str;
+
+    //Replace all the characters in 'hidden' with underscores
+    for(int index=0; index < shadow.length(); index++)
+    {
+        shadow[index] = '_';
+    }
+}
+
 
 //Overloaded << operator
 ostream& operator<<(ostream& osObj, Word& targetObj)

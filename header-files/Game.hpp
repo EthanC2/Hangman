@@ -26,7 +26,6 @@ class Game
     private:
         //Abstract Aspects
         bool playGame;
-        int  guesses;
         char guess;
 
         //Parts of the game
@@ -38,6 +37,7 @@ class Game
     public:
         //Parts of a game loop
         Game();
+        Game(string);
         void run();
         void stop();
 
@@ -59,11 +59,16 @@ Game::Game()
 {
     //Set starting values
     playGame = true;
-    guesses  =  6;         //6 guesses, one for each major body part (head, torso, arms, legs)
     guess    = '?';       //Initializes guess to an error value, which will be overwritten at the first turn
+}
 
-    //Start the game upon instantiation
-    this->run();    
+//Parameterized Constructor
+Game::Game(string givenWord)
+{
+    //Game setup
+    playGame = true;
+    guess = '?';
+    word = givenWord;
 }
 
 //run() (game loop)
@@ -96,7 +101,8 @@ void Game::displayGame()
     menu.showTitle();      
     cout << gallow;       
     cout << word;
-    cout << "Guesses: " << guesses << endl;
+    cout << "Word length: " << word.getLength() << endl;
+    cout << "Guesses: " << 6 - gallow.getStage() << endl;
     cout << letterBank << endl;
 }
 
@@ -109,7 +115,7 @@ void Game::getGuess()
 
     //Prevent registering the extra guess from hitting 'enter' to submit guess
     cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n' );
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     //Set the character to guessed 
     letterBank.setGuessed( toupper(guess) );
@@ -118,22 +124,17 @@ void Game::getGuess()
 //evalGuess()
 void Game::evalGuess()
 {
-    if (word.contains(guess))     //If the word contains the guess
-    {
-        word.reveal(guess);    //Reveal the appropriate letters
-    }
+    if (word.contains(guess))     //If the word contains the guess,
+        word.reveal(guess);      //Reveal the appropriate letters
     else
-    {
-        guesses--;     //Subtract one guess
         gallow++;     //Add another body part (overloaded postfix operator)
-    }
 }
 
 //updateGame
 void Game::updateGame()
 {
-    //If no guesses left, end the game (lost)
-    if (guesses <= 0)
+    //If the man is dead (stage 6), end the game (lost)
+    if (gallow.getStage() >= 6)
         this->endWithLoss();
     
     //If the word is solved, end the game (won)
@@ -146,7 +147,8 @@ void Game::endWithLoss()
 {
     this->stop();
     this->displayGame();
-    cout << '\n' << RED << "You lost!" << RESET << '\n' << endl;
+    cout << '\n' << RED << "You lost!" << RESET << endl;
+    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << '\n' << endl;
 }
 
 //End game (won)
@@ -154,7 +156,8 @@ void Game::endWithWin()
 {
     this->stop();
     this->displayGame();
-    cout << '\n' << GREEN << "You won!" << RESET << '\n' << endl;
+    cout << '\n' << GREEN << "You won!" << RESET << endl;
+    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << '\n' << endl;
 }
 
 #endif  
