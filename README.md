@@ -7,5 +7,11 @@ The credit for the wordlist used in this project belongs to [Mieliestronk](http:
 ## External Dependencies
 None
 
+## Last Update
+5/24/2021
+
 ## License
 This project is free software, distrubuted under an [MIT license](https://opensource.org/licenses/MIT). <br />
+
+## Contact
+If you have any questions about this project, please contact me at ethanrcox[at]gmail{dot}com
