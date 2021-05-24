@@ -13,9 +13,18 @@ Project Description: At the end of my first programming class, we were tasked wi
 
 This file (HangmanMain.cpp): This file serves as the driver code for the program as it both chooses the random word and starts the game. 
 */
+
+//Custom Header Files
 #include "./header-files/Game.hpp"                   //Includes the game, and all of its dependents
 #include "./header-files/randomWordGenerator.hpp"   //Includes the random word generator
+
+//Namespace
 using namespace std;
+
+//Function Prototypes
+template <typename Type>
+void reverse(Type& iterObj);
+
 
 //Driver code
 int main()
@@ -23,12 +32,58 @@ int main()
     //Seed random number generator
     srand(time(NULL));
 
-    //Get a random word 
-    randomWordGenerator wordGenerator;
-    string randomWord = wordGenerator.getRandomWord();
+    //Variables
+    char response;                                           //For making choices at the menu
+    Menu mainMenu;                                            //To display choices
+    randomWordGenerator wordGenerator;                       //Instantiate a random word generator
+    string randomWord = wordGenerator.getRandomWord();      //Get a random word
 
-    //Declares the game, starting it
-    Game game(randomWord);
+    //Prompt user for normal mode or hard mode (normal or reverse)
+    mainMenu.showMainMenu();
+    
+    do
+    {
+        //Get choice
+        cout << "\nResponse: ";
+        cin.get(response);
+    
+        //Prevent registering the enter key
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    } 
+    while(response != '1' && response != '2');
+
+
+    //Declares the game, starting it -- { } needed to prevent jump to case label error
+    switch (response)
+    {
+        case '1':
+            {
+                Game normalGame(randomWord);
+                break;
+            }
+        case '2':
+            {
+                reverse(randomWord);
+                Game reverseGame(randomWord);
+                break;
+            }
+        default:
+            cerr << "Fatal Error: improper value from regularted input." << endl;
+            exit(1);
+    }
 
     return 0;
+}
+
+//Reverse()
+template <typename Type>
+void reverse(Type& iterObj)  //iterable rvalue
+{
+    int size = iterObj.size();   //reduces code clutter 
+
+    for(int i=0; i < (size / 2); i++)
+    {
+        swap(iterObj[i], iterObj[size-1-i]);
+    }
 }

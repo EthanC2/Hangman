@@ -142,7 +142,7 @@ void Game::endWithLoss()
     this->stop();
     this->displayGame();
     cout << '\n' << RED << "You lost!" << RESET << endl;
-    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << '\n' << endl;
+    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << endl;
 }
 
 //End game (won)
@@ -151,7 +151,7 @@ void Game::endWithWin()
     this->stop();
     this->displayGame();
     cout << '\n' << GREEN << "You won!" << RESET << endl;
-    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << '\n' << endl;
+    cout << LIGHT_BLUE << "The word was: " << GREEN << word.getWord() << RESET << endl;
 }
 
 #endif  

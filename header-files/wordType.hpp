@@ -80,7 +80,7 @@ int Word::getLength() const
 }
 
 //getWord()
-string Word::getWord() const   //Returns the target word
+string Word::getWord() const  //Returns the target word
 {
     return target;
 }
