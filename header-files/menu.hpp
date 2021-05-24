@@ -1,3 +1,9 @@
+/*
+
+This file: This file contains the Menu class, which contains the title and main menu of the game
+
+*/
+
 #ifndef MENU_TYPE
 #define MENU_TYPE
 
@@ -8,18 +14,23 @@
 //Custom Header Files
 #include "textMods.h"
 
+//Namespace
 using namespace std;
 
-//*************************** MENU DECLARATION ********************************\\
+//*************************** Menu Declaration ********************************\\
 
 class Menu
 {
+    private:
+        //Empty
+
     public:
+        //Methods
         Menu();
         void showTitle();
 };
 
-//*************************** MENU IMPLEMENTATION ********************************\\
+//*************************** Menu Implementation ********************************\\
 
 //Default Constructor
 Menu::Menu()

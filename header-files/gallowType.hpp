@@ -1,7 +1,7 @@
 #ifndef GALLOW_TYPE
 #define GALLOW_TYPE
 
-//*********************** GALLOWTYPE DECLARATION  *************************\\
+//*********************** Gallow Declaration  *************************\\
 
 class Gallow
 {
@@ -19,7 +19,7 @@ class Gallow
         friend ostream& operator<<(ostream&, Gallow&);
 };
 
-//*********************** GALLOWTYPE IMPLEMENTATION  *************************\\
+//*********************** Gallowtype Implementation  *************************\\
 
 //Default Constructor
 Gallow::Gallow()
@@ -30,21 +30,22 @@ Gallow::Gallow()
 //getStage
 int Gallow::getStage() const
 {
-    return stage;
+    return stage;    //return the stage
 }
 
 //setStage
 void Gallow::setStage(int stageLevel)
 {
-    if (stageLevel >= 0 && stageLevel >= 6)
-        stage = stageLevel;
+    if (stageLevel >= 0 && stageLevel >= 6)   //If a valid stage
+        stage = stageLevel;                  //Set the stage
     else
-        stage = 0;
+        stage = 0;                         //Otherwise, default to 0
 }
 
 //showGallow()
 void Gallow::showGallow() const
 {
+    //Display the appropriate gallow stage
     switch(stage)
     {
         case 0:

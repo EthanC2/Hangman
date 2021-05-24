@@ -1,9 +1,12 @@
+//Native Header Files
 #include <iostream>
 #include <string>
 #include <fstream>
+
+//Namespace
 using namespace std;
 
-//*************************** RANDOMWORDGENERATOR DECLARATION  ****************************\\
+//*************************** Random Word Generator Declaration  ****************************\\
 
 class randomWordGenerator
 {
@@ -11,12 +14,13 @@ class randomWordGenerator
         //Empty
 
     public:
+        //Methods
         randomWordGenerator();
         string getRandomWord() const;   //technically const because there's no membeer variables...? lol
 };
 
 
-//*************************** RANDOMWORDGENERATOR IMPLEMENTATION  ****************************\\
+//*************************** Random Word Generator Implementation  ****************************\\
 
 //Default Constructor
 randomWordGenerator::randomWordGenerator()
@@ -55,5 +59,5 @@ string randomWordGenerator::getRandomWord() const
     //Cleanup - close the file
     inFile.close();
 
-    return line;
+    return line;    //Return the random word
 }

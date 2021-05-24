@@ -9,7 +9,7 @@
 #include "textMods.h"   //Contains text coloring 
 
 
-//****************************** LETTERTYPE DECLARATION **************************\\
+//****************************** LetterType Declaration **************************\\
 
 //Class: LetterType (composes the individual letters in the wordbank)
 class LetterType
@@ -44,7 +44,7 @@ class LetterType
 };
 
 
-//****************************** LETTERTYPE IMPLEMENTATION **************************\\
+//****************************** LetterType Implementation **************************\\
 
 //Default Constructor
 LetterType::LetterType()
@@ -71,8 +71,8 @@ char LetterType::getLetter()
 //setLetter()
 void LetterType::setLetter(char character)
 {
-    if (isalpha(character))
-        letter = character;
+    if (isalpha(character))      //If the given character is alphabetic,
+        letter = character;     //Then store the letter
 }
 
 //setGuessed()

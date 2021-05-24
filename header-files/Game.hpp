@@ -18,7 +18,7 @@
 //Namespace
 using namespace std;     //Small project, so using namespace std is acceptable
 
-//****************************** GAME DECLARATION *******************************\\
+//****************************** Game Declaration *******************************\\
 
 //Class: Game (contains the contents of the game, including the game loop)
 class Game
@@ -36,31 +36,22 @@ class Game
 
     public:
         //Parts of a game loop
-        Game();
         Game(string);
         void run();
         void stop();
 
         //Game Core
-        void displayGame();
-        void getGuess();
-        void evalGuess();
-        void updateGame();
+        void displayGame();       //Show the 'board'?
+        void getGuess();         //Get a guess (a single character) from the player
+        void evalGuess();       //Check whether that guess was right or wrong, and take the appropriate action
+        void updateGame();     //Check whether or not to end the game (player has won or lost)
 
         //End of game
         void endWithLoss();
         void endWithWin();
 };
 
-//****************************** GAME IMPLEMENTATION *******************************\\
-
-//Default constructor
-Game::Game()
-{
-    //Set starting values
-    playGame = true;
-    guess    = '?';       //Initializes guess to an error value, which will be overwritten at the first turn
-}
+//****************************** Game Implementation *******************************\\
 
 //Parameterized Constructor
 Game::Game(string givenWord)
@@ -69,6 +60,9 @@ Game::Game(string givenWord)
     playGame = true;
     guess = '?';
     word = givenWord;  //overloaded '=' operator sets both target and shadow
+
+    //Start the game
+    this->run();
 }
 
 //run() (game loop)
@@ -77,9 +71,9 @@ void Game::run()
     //Game loop
     while(playGame)
     {
-        this->displayGame();     //Display the title, gallow, word, and letter bank
-        this->getGuess();       //Get a guess from the player
-        this->evalGuess();
+        this->displayGame();      //Display the title, gallow, word, and letter bank
+        this->getGuess();        //Get a guess from the player
+        this->evalGuess();      //Mark the guess as right or wrong
         this->updateGame();    //Evaluate the consequences of the guess
     }
 }

@@ -1,9 +1,12 @@
+//Native Header Files
 #include <iostream>
 #include <string>
 #include <vector>
+
+//Namespace
 using namespace std;
 
-//*************************** WORD CLASS DECLARATION  ******************************\\
+//*************************** Word Class Declaration  ******************************\\
 
 class Word
 {
@@ -27,7 +30,7 @@ class Word
 
 };
 
-//*************************** WORD CLASS IMPLEMENTATION  ******************************\\
+//*************************** Word Class Implementation  ******************************\\
 
 //Default Constructor
 Word::Word()
