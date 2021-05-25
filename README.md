@@ -7,9 +7,6 @@ This project is a simple, terminal-based Hangman game for Bash, made entirely in
 ## Credits for Wordlist
 The credit for the wordlist used in this project belongs to [Mieliestronk](http://www.mieliestronk.com/wordlist.html); however, I would also like to credit [Tom25](https://github.com/Tom25), since I found the wordlist through his Python Hangman project.
 
-## External Dependencies
-None
-
 ## Last Update
 5/24/2021
 
