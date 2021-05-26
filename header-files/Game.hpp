@@ -41,7 +41,7 @@ class Game
         void stop();
 
         //Game Core
-        void displayGame();       //Show the 'board'?
+        void displayGame();       //Show the 'board'/game, whatever
         void getGuess();         //Get a guess (a single character) from the player
         void evalGuess();       //Check whether that guess was right or wrong, and take the appropriate action
         void updateGame();     //Check whether or not to end the game (player has won or lost)
@@ -103,16 +103,40 @@ void Game::displayGame()
 //guess()
 void Game::getGuess()
 {
-    //Get character from the user
-    cout << "\nEnter a character: ";
-    cin.get(guess);
+    //Lambda expression, returns true if the character is not a capital letter
+    auto invalidChar = [](char guess) { return static_cast<int>(guess) < 65 || static_cast<int>(guess) > 90; };
 
-    //Prevent registering the extra guess from hitting 'enter' to submit guess
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    //Input validation loop: continues until a non-guessed, valid character is given
+    do
+    {
+        //Get character from the user
+        cout << "\nEnter a character: ";
+        cin.get(guess);
+
+        //Prevent registering hitting 'enter' to submit guess as another guess
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        //Filter case sensitivity
+        guess = toupper(guess);
+
+        //If the letter has been guessed, display an error and loop again
+        if (letterBank.isGuessed(guess))
+        {
+            cerr << "You have already guessed \'"  << guess << "\'. Please try again." << endl;      //Using clog for non-critical errors
+        }
+
+        //If the letter is not a valid letter, display an error and loop again
+        if (invalidChar(guess))
+        {
+            cerr << "Error: \'" << guess << "\' is not a valid letter" << endl;
+        }
+
+    } while (letterBank.isGuessed(guess) || invalidChar(guess));     
+
 
     //Set the character to guessed 
-    letterBank.setGuessed( toupper(guess) );
+    letterBank.setGuessed(guess);
 }
 
 //evalGuess()

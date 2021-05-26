@@ -26,14 +26,14 @@ template <typename Type>
 void reverse(Type& iterObj);
 
 
-//Driver code
+//DRIVER CODE
 int main()
 {
     //Seed random number generator
     srand(time(NULL));
 
     //Variables
-    char response;                                           //For making choices at the menu
+    char response;                                             //For making choices at the menu
     Menu mainMenu;                                            //To display choices
     randomWordGenerator wordGenerator;                       //Instantiate a random word generator
     string randomWord = wordGenerator.getRandomWord();      //Get a random word
@@ -87,3 +87,4 @@ void reverse(Type& iterObj)  //iterable rvalue
         swap(iterObj[i], iterObj[size-1-i]);
     }
 }
+

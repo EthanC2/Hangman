@@ -22,6 +22,7 @@ class LetterBank
     public:
         //Methods
         LetterBank();
+        bool isGuessed(const char);
         void setGuessed(const char);
         void print() const;
         
@@ -58,6 +59,20 @@ void LetterBank::setGuessed(const char guess)
             break;
         }
     }
+}
+
+//isGuessed
+bool LetterBank::isGuessed(const char guess) 
+{
+    //For every letter in the letter bank
+    for(int pos=0; pos < letters.size(); pos++)
+    {
+        //If the current letter matches the given letter, return whether it has been guessed
+        if (letters[pos].isEqual(guess))
+            return letters[pos].isGuessed();
+    } 
+
+    return NULL;   //for errors
 }
 
 //print()
