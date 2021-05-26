@@ -7,7 +7,7 @@
 #include <array>
 
 //Custom Header
-#include "letterType.hpp"
+#include "letterClass.hpp"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class LetterBank
 {
     private:
         //Data members
-        array<LetterType, 26> letters;    //Array of LetterType objects
+        array<Letter, 26> letters;    //Array of Letter objects
 
     public:
         //Methods
@@ -39,7 +39,7 @@ LetterBank::LetterBank()
     //All uppercase letters
     const string uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
     
-    //For every character in the string above, create a 'LetterType' object from it for the array 'letters'
+    //For every character in the string above, create a 'Letter' object from it for the array 'letters'
     for(int pos=0; pos < uppercaseLetters.length(); pos++)  
     {
         letters[pos] = uppercaseLetters[pos];   //note the overloaded letterType '=' operator

@@ -9,10 +9,10 @@
 #include <unistd.h>    //Miscellaneous Functions for the Linux Terminal in C++ (includes sleep())
 
 //Custom Header Files
-#include "menu.hpp"                //The main menu
-#include "wordType.hpp"           //The unknown word to be guessed
-#include "letterBankType.hpp"    //The letters that have been/can be guessed
-#include "gallowType.hpp"       //The ASCII art of the gallow
+#include "menuClass.hpp"                //The main menu
+#include "wordClass.hpp"           //The unknown word to be guessed
+#include "letterBankClass.hpp"    //The letters that have been/can be guessed
+#include "gallowClass.hpp"       //The ASCII art of the gallow
 #include "textMods.h"          //Contains text coloring
 
 //Namespace

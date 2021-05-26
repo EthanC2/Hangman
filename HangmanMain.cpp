@@ -15,8 +15,8 @@ This file (HangmanMain.cpp): This file serves as the driver code for the program
 */
 
 //Custom Header Files
-#include "./header-files/Game.hpp"                   //Includes the game, and all of its dependents
-#include "./header-files/randomWordGenerator.hpp"   //Includes the random word generator
+#include "./header-files/GameClass.hpp"                   //Includes the game, and all of its dependents
+#include "./header-files/randomWordGeneratorClass.hpp"   //Includes the random word generator
 
 //Namespace
 using namespace std;
@@ -78,7 +78,7 @@ int main()
 
 //Reverse()
 template <typename Type>
-void reverse(Type& iterObj)  //iterable rvalue
+void reverse(Type& iterObj)  //any iterable rvalue
 {
     int size = iterObj.size();   //reduces code clutter 
 
