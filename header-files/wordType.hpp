@@ -17,6 +17,7 @@ class Word
     public:
         //Methods
         Word();
+        Word(string);
         bool contains(const char) const;
         void reveal(const char);
         bool solved() const;
@@ -35,10 +36,23 @@ class Word
 //Default Constructor
 Word::Word()
 {
-     //The default constructor should never be used, so
-    //the default target is '?', to indicate an error.
+    //These values are overwritten immediately. They exist to initialize the variables at instantiation.
     target = "?";
     shadow = "_";
+}
+
+//Parameterized Constructor
+Word::Word(string str)
+{
+    //Set both characters to the given string
+    target = str;
+    shadow = str;
+
+    //Replace all the characters in 'hidden' with underscores
+    for(int index=0; index < shadow.length(); index++)
+    {
+        shadow[index] = '_';
+    }
 }
 
 //contains()
