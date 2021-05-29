@@ -103,8 +103,8 @@ void Game::displayGame()
 //guess()
 void Game::getGuess()
 {
-    //Lambda expression, returns true if the character is not a capital letter
-    auto invalidChar = [](char guess) { return static_cast<int>(guess) < 65 || static_cast<int>(guess) > 90; };
+    //Lambda expression, returns true (invalid) if the character is not a capital letter
+    auto invalidChar = [] (char guess) { return static_cast<int>(guess) < 65 || static_cast<int>(guess) > 90; };
 
     //Input validation loop: continues until a non-guessed, valid character is given
     do
@@ -123,7 +123,7 @@ void Game::getGuess()
         //If the letter has been guessed, display an error and loop again
         if (letterBank.isGuessed(guess))
         {
-            cerr << "You have already guessed \'"  << guess << "\'. Please try again." << endl;      //Using clog for non-critical errors
+            cerr << "You have already guessed \'"  << guess << "\'. Try again." << endl;      //Using clog for non-critical errors
         }
 
         //If the letter is not a valid letter, display an error and loop again
@@ -132,7 +132,7 @@ void Game::getGuess()
             cerr << "Error: \'" << guess << "\' is not a valid letter" << endl;
         }
 
-    } while (letterBank.isGuessed(guess) || invalidChar(guess));     
+    } while (letterBank.isGuessed(guess) || invalidChar(guess));   //Continue prompting the user until a valid character is entered
 
 
     //Set the character to guessed 
@@ -151,8 +151,8 @@ void Game::evalGuess()
 //updateGame
 void Game::updateGame()
 {
-    //If the man is dead (stage 6), end the game (lost)
-    if (gallow.getStage() >= 6)
+    //If the man is dead (gallow stage 6), end the game (lost)
+    if (gallow.isHanged())
         this->endWithLoss();
     
     //If the word is solved, end the game (won)

@@ -33,12 +33,12 @@ int main()
     srand(time(NULL));
 
     //Variables
-    char response;                                             //For making choices at the menu
-    Menu mainMenu;                                            //To display choices
-    randomWordGenerator wordGenerator;                       //Instantiate a random word generator
-    string randomWord = wordGenerator.getRandomWord();      //Get a random word
+    char response;                                                   //For making choices at the menu
+    Menu mainMenu;                                                  //To display choices
+    randomWordGenerator wordGenerator("hangmanWordlist.txt");      //Instantiate a random word generator (using the source file "hangmanWordlist.txt")
+    string randomWord = wordGenerator.getRandomWord();            //Get a random word
 
-    //Prompt user for normal mode or hard mode (normal or reverse)
+    //Prompt user for normal mode or hard mode (normal or reverse mode)
     mainMenu.showMainMenu();
     
     do

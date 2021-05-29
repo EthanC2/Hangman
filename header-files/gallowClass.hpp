@@ -12,6 +12,7 @@ class Gallow
         Gallow();
         int getStage() const;
         void setStage(int);
+        bool isHanged() const;
         void showGallow() const;
 
         //Overloaded Operations
@@ -40,6 +41,12 @@ void Gallow::setStage(int stageLevel)
         stage = stageLevel;                  //Set the stage
     else
         stage = 0;                         //Otherwise, default to 0
+}
+
+//isHanged()
+bool Gallow::isHanged() const
+{
+    return stage >= 6;
 }
 
 //showGallow()

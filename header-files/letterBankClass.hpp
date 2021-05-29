@@ -42,7 +42,8 @@ LetterBank::LetterBank()
     //For every character in the string above, create a 'Letter' object from it for the array 'letters'
     for(int pos=0; pos < uppercaseLetters.length(); pos++)  
     {
-        letters[pos] = uppercaseLetters[pos];   //note the overloaded letterType '=' operator
+        //Load each position in the letter bank with a 'Letter' object from the alphabet
+        letters[pos] = Letter( uppercaseLetters[pos] );  
     }
 }
 

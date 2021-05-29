@@ -11,12 +11,13 @@ using namespace std;
 class randomWordGenerator
 {
     private:
-        //Empty
+        string filename;
 
     public:
         //Methods
         randomWordGenerator();
-        string getRandomWord() const;   //technically const because there's no membeer variables...? lol
+        randomWordGenerator(string);
+        string getRandomWord() const;   //technically const because there's no member variables...? lol
 };
 
 
@@ -28,6 +29,11 @@ randomWordGenerator::randomWordGenerator()
     //Empty
 }
 
+//Parameterized Constructor
+randomWordGenerator::randomWordGenerator(string name)
+{
+    filename = name;
+}
 
 //getRandomWord()
 string randomWordGenerator::getRandomWord() const
@@ -39,7 +45,7 @@ string randomWordGenerator::getRandomWord() const
     int randomLine;   //The random line to draw the word from (to start the game)
 
     //Open the infile
-    inFile.open("hangmanWordlist.txt");
+    inFile.open(filename); 
 
     //Find the total amount of lines in the file
     while(getline(inFile, line))
