@@ -59,7 +59,7 @@ Game::Game(string givenWord)
     //Game setup
     playGame = true;
     guess = '?';
-    word = givenWord;  //overloaded '=' operator sets both target and shadow
+    word = givenWord;  //Overloaded '=' operator sets both target and shadow
 
     //Start the game
     this->run();
@@ -74,7 +74,7 @@ void Game::run()
         this->displayGame();      //Display the title, gallow, word, and letter bank
         this->getGuess();        //Get a guess from the player
         this->evalGuess();      //Mark the guess as right or wrong
-        this->updateGame();    //Evaluate the consequences of the guess
+        this->updateGame();    //Evaluate the consequences of the guess (check if game has ended)
     }
 }
 

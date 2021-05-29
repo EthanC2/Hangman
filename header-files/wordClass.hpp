@@ -121,8 +121,8 @@ void Word::operator=(const string str)
 
 
 //Overloaded << operator
-ostream& operator<<(ostream& osObj, Word& targetObj)
+ostream& operator<<(ostream& osObj, Word& wordObj)
 {
-    targetObj.print();
+    wordObj.print();
     return osObj;   //empty ostream object
 }

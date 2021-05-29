@@ -78,7 +78,8 @@ void Gallow::showGallow() const
             cout << "    |    |    " << '\n';
             cout << "    |    0    " << '\n';
             cout << "    |    |    " << '\n';
-            cout << "    |         " << "\n\n";
+            cout << "    |         " << "\n";
+            cout << " --------     " << "\n\n";
             break;
 
         case 3:

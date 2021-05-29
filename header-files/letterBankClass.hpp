@@ -54,7 +54,7 @@ void LetterBank::setGuessed(const char guess)
     for(int pos=0; pos < letters.size(); pos++)
     {
         //If the current letter matches the given letter, set it to guessed
-        if(letters[pos].isEqual(guess))
+        if (letters[pos] == guess)
         {
             letters[pos].setGuessed(true);
             break;

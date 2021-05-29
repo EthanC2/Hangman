@@ -90,7 +90,7 @@ bool Letter::isGuessed()
 //isEqual
 bool Letter::isEqual(const char character)
 {
-    return this->letter == character;
+    return letter == character;
 }
 
 //print()
