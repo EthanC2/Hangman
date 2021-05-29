@@ -7,7 +7,7 @@ class Gallow
 {
     private:
         //Data Members
-        int stage;  //the progress to game over
+        int stage;        //the progress to game over
 
     public:
         //Methods
