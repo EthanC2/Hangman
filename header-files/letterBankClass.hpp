@@ -9,6 +9,7 @@
 //Custom Header
 #include "letterClass.hpp"
 
+//Namespace
 using namespace std;
 
 //************************* LetterBank Declaration ****************************\\
