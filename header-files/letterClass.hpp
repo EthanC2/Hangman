@@ -20,7 +20,6 @@ class Letter
         bool guessed;
 
     public:
-
         //Constructors
         Letter();
         Letter(char);
