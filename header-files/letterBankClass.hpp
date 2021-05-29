@@ -70,7 +70,7 @@ bool LetterBank::isGuessed(const char guess)
     for(int pos=0; pos < letters.size(); pos++)
     {
         //If the current letter matches the given letter, return whether it has been guessed
-        if (letters[pos].isEqual(guess))
+        if (letters[pos] == guess)
             return letters[pos].isGuessed();
     } 
 

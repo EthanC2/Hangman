@@ -142,6 +142,9 @@ void Game::getGuess()
 //evalGuess()
 void Game::evalGuess()
 {
+    //System internally uses lowercase
+    guess = tolower(guess);
+
     if (word.contains(guess))     //If the word contains the guess,
         word.reveal(guess);      //Reveal the appropriate letters
     else
