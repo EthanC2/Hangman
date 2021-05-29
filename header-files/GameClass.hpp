@@ -123,13 +123,13 @@ void Game::getGuess()
         //If the letter has been guessed, display an error and loop again
         if (letterBank.isGuessed(guess))
         {
-            cerr << "You have already guessed \'"  << guess << "\'. Try again." << endl;      //Using clog for non-critical errors
+            clog << "You have already guessed \'"  << guess << "\'. Try again." << endl;      //Using clog for non-critical errors
         }
 
         //If the letter is not a valid letter, display an error and loop again
         if (invalidChar(guess))
         {
-            cerr << "Error: \'" << guess << "\' is not a valid letter" << endl;
+            clog << "Error: \'" << guess << "\' is not a valid letter" << endl;
         }
 
     } while (letterBank.isGuessed(guess) || invalidChar(guess));   //Continue prompting the user until a valid character is entered
