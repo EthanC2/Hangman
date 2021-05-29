@@ -6,9 +6,11 @@
 class Gallow
 {
     private:
+        //Data Members
         int stage;  //the progress to game over
 
     public:
+        //Methods
         Gallow();
         int getStage() const;
         void setStage(int);
