@@ -11,6 +11,7 @@ using namespace std;
 class randomWordGenerator
 {
     private:
+        //Data Members
         string filename;
 
     public:
@@ -26,7 +27,7 @@ class randomWordGenerator
 //Default Constructor
 randomWordGenerator::randomWordGenerator()
 {
-    //Empty
+    filename = "";
 }
 
 //Parameterized Constructor
