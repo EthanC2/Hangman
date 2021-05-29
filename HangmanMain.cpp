@@ -41,6 +41,7 @@ int main()
     //Prompt user for normal mode or hard mode (normal or reverse mode)
     mainMenu.showMainMenu();
     
+    //Input loop
     do
     {
         //Get choice

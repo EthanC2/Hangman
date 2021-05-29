@@ -40,10 +40,10 @@ randomWordGenerator::randomWordGenerator(string name)
 string randomWordGenerator::getRandomWord() const
 {
     //Variables
-    ifstream inFile;     //A read-only file
-    string line;        //A place to store the contents of a line of the file
-    int lines = 0;         //The total amount of lines in the file
-    int randomLine;   //The random line to draw the word from (to start the game)
+    ifstream inFile;       //A read-only file
+    string line;          //A place to store the contents of a line of the file
+    int lines = 0;       //The total amount of lines in the file
+    int randomLine;     //The random line to draw the word from (to start the game)
 
     //Open the infile
     inFile.open(filename); 
@@ -53,8 +53,8 @@ string randomWordGenerator::getRandomWord() const
         lines++;
 
     //Return to beginning of file
-    inFile.clear();     //Clear
-    inFile.seekg(0);   //Reset the pointer back to the beginning of the file
+    inFile.clear();        //Clear
+    inFile.seekg(0);      //Reset the pointer back to the beginning of the file
 
     //Calculate a random line
     randomLine = rand() % (lines + 1);
