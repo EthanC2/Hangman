@@ -18,7 +18,7 @@ class randomWordGenerator
         //Methods
         randomWordGenerator();
         randomWordGenerator(string);
-        string getRandomWord() const;   //technically const because there's no member variables...? lol
+        string getRandomWord() const;
 };
 
 
