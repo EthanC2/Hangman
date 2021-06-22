@@ -70,7 +70,7 @@ int main()
                 break;
             }
         default:
-            cerr << "Fatal Error: improper value from regularted input." << endl;
+            clog << "Fatal Error: improper value from regularted input." << endl;  //Clog for non-fatal errors
             exit(1);
     }
 
