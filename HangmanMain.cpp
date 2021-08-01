@@ -33,7 +33,7 @@ int main()
     srand(time(NULL));
 
     //Variables
-    char response;                                                   //For making choices at the menu
+    int response;                                                    //For making choices at the menu
     Menu mainMenu;                                                  //To display choices
     randomWordGenerator wordGenerator("hangmanWordlist.txt");      //Instantiate a random word generator (using the source file "hangmanWordlist.txt")
     string randomWord = wordGenerator.getRandomWord();            //Get a random word
@@ -52,18 +52,18 @@ int main()
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     } 
-    while(response != '1' && response != '2');
+    while(response != 1 && response != 2);
 
 
     //Declares the game, starting it -- { } needed to prevent jump to case label error
     switch (response)
     {
-        case '1':
+        case 1:
             {
                 Game normalGame(randomWord);
                 break;
             }
-        case '2':
+        case 2:
             {
                 reverse(randomWord);
                 Game reverseGame(randomWord);
