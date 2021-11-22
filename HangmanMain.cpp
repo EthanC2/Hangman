@@ -8,7 +8,7 @@ Project Link: https://github.com/EthanC2/hangman
 
 Project Description: At the end of my first programming class, we were tasked with building Hangman as our final project. Even with the limited
                      knowledge that we had, we were all still able to make the game work using a procedural approach. Since I recently finished my
-                     second programming course (CSC-1720), I decided to remake the project on my own to see how far I'd come. Naturally, I decided
+                     second programming course in early 2021 (CSC-1720), I decided to remake the project on my own to see how far I'd come. Naturally, I decided
                      to add a bit of my own personal touches such as the output coloring and overall restructuring of the project.
 
 This file (HangmanMain.cpp): This file serves as the driver code for the program as it both chooses the random word and starts the game. 
