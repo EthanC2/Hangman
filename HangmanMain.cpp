@@ -4,7 +4,7 @@ Date: 5/21/2021
 Platform: Bash (a Linux Terminal)
 Language: C++, no external libraries
 External Dependencies: None
-Project Link: https://github.com/EthanC2/Hangman
+Project Link: https://github.com/EthanC2/hangman
 
 Project Description: At the end of my first programming class, we were tasked with building Hangman as our final project. Even with the limited
                      knowledge that we had, we were all still able to make the game work using a procedural approach. Since I recently finished my
